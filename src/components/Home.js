@@ -22,6 +22,7 @@ import DropdownOptions from './DropdownOptions';
 import ReportedPostApi from '../api/ReportPostApi';
 import ReportPostModal from './ReportPostModal';
 import getNotificationApi from '../api/getNotification';
+import Loader from './loader';
 
 
 
@@ -59,7 +60,7 @@ const dispatch=useDispatch()
   const [initialImage, setInitialImage] = useState(null);
   const [userdetails,setUser] = useState(null)
   const[showReportedPostModal,setShowModal]=useState(false)
-
+  const [loading, setLoading] = useState(true);
   const [showAllPosts, setShowAllPosts] = useState(false); 
 
   const access_token = localStorage.getItem('access')
@@ -104,6 +105,7 @@ const dispatch=useDispatch()
     const fetchData = async () => {
       try {
 
+        setLoading(true);
         const data = await postListApi()
        
         const notification=await getNotificationApi()
@@ -114,7 +116,9 @@ const dispatch=useDispatch()
         
 
         handleuserUpdate()
+        setLoading(false);
         console.log('posts inside home page useEffect',data)
+
       } catch (error) {
         console.error(error)
       }
@@ -243,7 +247,9 @@ const dispatch=useDispatch()
 
  
 
-
+ if (loading) {
+  return <Loader />; // Render loader component while data is being fetched
+}
 
  
   return (
