@@ -3,5 +3,5 @@
 
 
 const Protocol = window.location.protocol;
-const BaseDomain = 'socialnest.online:8000';
+const BaseDomain = 'socialnest.online';
 const BASE_URL = `${Protocol}//${BaseDomain}`;
