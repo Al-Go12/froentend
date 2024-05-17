@@ -2,7 +2,7 @@ import React, { useRef,useEffect } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { useSelector } from "react-redux";
-import { useLocation } from 'react-router-dom';
+
 
 
 
@@ -22,7 +22,7 @@ const RoomPage=()=>{
     useEffect(()=>{
     
 
-        const myMeeting= async (element)=>{
+        const myMeeting= async ()=>{
             const userID = user.id.toString();
     
             const userName =user.username ;
@@ -57,10 +57,10 @@ const RoomPage=()=>{
         }) }  
 
 
- myMeeting()
+           myMeeting()
 
 
-    },[])
+    },[user, roomId])
  
     
 
@@ -68,9 +68,11 @@ const RoomPage=()=>{
     
     
     
-     return <div>
-           <div className="w-full h-full"ref={containerRef} />
-         </div>
+     return (
+        <div className="w-full h-full"ref={containerRef} />
+   )
+     
+    
 
     }
     
