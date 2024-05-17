@@ -166,6 +166,9 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
       inputRef.current.focus();
     }; 
     
+    if (loading) {
+      return <Loader />; // Render loader component while data is being fetched
+    }
 
 
   return (
