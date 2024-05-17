@@ -13,7 +13,7 @@ import { ToastContainer } from 'react-toastify';
 
 
 function App() {
-  document.title = "Tribe Tie"; // Set the new tab title
+  document.title = "Social Nest"; // Set the new tab title
   return (
     <div>
       <Provider store={store}>
