@@ -204,7 +204,7 @@ const Messages = () => {
       const websocketProtocol =  window.location.protocol === "http:" ? "ws://" : "ws://";
      // const wsUrl = `${websocketProtocol}${window.location.host}/ws/chat/${chatroomId}/?token=${accessToken}`;
       
-       const wsUrl = `wss://backend.socialnest.online/ws/chat/${chatroomId}/?token=${accessToken}`;
+      const wsUrl = `wss://backend.socialnest.online/ws/chat/${chatroomId}/?token=${accessToken}`;
       const newChatWs = new WebSocket(wsUrl);
       console.log('checking websocket')
 
