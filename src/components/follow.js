@@ -398,7 +398,9 @@ const Follow = () => {
 
 
     //
-    
+    if (loading) {
+      return <Loader />; // Render loader component while data is being fetched
+    }
    
     return (
         <UserPage>

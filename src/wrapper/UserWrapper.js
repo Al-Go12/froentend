@@ -12,12 +12,14 @@ import ProfilePage from '../pages/User/UserProfile';
 import ForgotPassword from '../pages/User/ForgetPassword';
 import ChangePassword from '../pages/User/ChangePassword';
 
+
 import Messages from '../pages/User/messages';
 import Notifications from '../components/Notification';
 import Follow from '../components/follow';
 import RoomPage from '../pages/User/videoCall';
 import SearchPage from '../pages/User/searchPage';
 import AudioCall from '../pages/User/audioCall';
+import Loader from '../components/loader';
 
 
 
@@ -123,7 +125,7 @@ function UserWrapper() {
  ]) 
 
  if (isLoading) {
-    return <div>Loading...</div>; // Render a loading indicator while checking authentication
+    return <Loader/>; // Render a loading indicator while checking authentication
 }   else{
 
       return routes;
