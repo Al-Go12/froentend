@@ -57,7 +57,7 @@ const MenuSideBar = () => {
     if (user) {
       const accessToken = localStorage.getItem('access')
       const websocketProtocol = window.location.protocol === 'http:' ? 'ws://' : 'ws://';
-      const socket = new WebSocket(`ws://127.0.0.1:8000/ws/notification/?token=${accessToken}`);
+      const socket = new WebSocket(`wss://backend.socialnest.online/ws/notification/?token=${accessToken}`);
       // const socket = new WebSocket(`wss://www.instaconnect.online/ws/notification/?token=${accessToken}`);
 
       socket.onopen = () => {
