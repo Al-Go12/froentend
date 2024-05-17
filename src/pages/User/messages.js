@@ -202,9 +202,9 @@ const Messages = () => {
      
       const accessToken = localStorage.getItem("access");
       const websocketProtocol =  window.location.protocol === "http:" ? "ws://" : "ws://";
-      //const wsUrl = `${websocketProtocol}${window.location.host}/ws/chat/${chatroomId}/?token=${accessToken}`;
+     // const wsUrl = `${websocketProtocol}${window.location.host}/ws/chat/${chatroomId}/?token=${accessToken}`;
       
-       const wsUrl = `${websocketProtocol}127.0.0.1:8000/ws/chat/${chatroomId}/?token=${accessToken}`;
+       const wsUrl = `wss://backend.socialnest.online/ws/chat/${chatroomId}/?token=${accessToken}`;
       const newChatWs = new WebSocket(wsUrl);
       console.log('checking websocket')
 
