@@ -23,6 +23,7 @@ import axios from 'axios';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Menu, MenuItem } from '@material-ui/core';
 import ReportUserModal from './ReportUserModal';
+import Loader from './loader';
 
 
 
@@ -174,7 +175,7 @@ const Follow = () => {
     const [following,setfollowing] = useState([])
    
 
-    const [isLoading, setIsLoading] = useState(false)
+    const [loading, setLoading] = useState(true);
     const [isFollowingLocal, setIsFollowingLocal] = useState(false)
     const [profile, setProfile] = useState(null)
     const [showNetworkModal , setShowNetworkModal] = useState(false)
@@ -273,7 +274,7 @@ const Follow = () => {
    
   
     useEffect(()=>{
-       
+       setLoading(true)
         if(user?.username === null){
           checkAuth()
           
@@ -284,6 +285,7 @@ const Follow = () => {
             
             
         }
+        setLoading(false)
     },[user,param])
 
 
@@ -291,6 +293,7 @@ const Follow = () => {
 
     useEffect(() => {
       if (profile && user) {
+        setLoading(true)
         const fetchFollowStatus = async () => {
           try {
             const response = await checkfollowstatusapi(profile.email)
@@ -306,6 +309,7 @@ const Follow = () => {
           }
         };
         fetchFollowStatus();
+        setLoading(false)
       }
     }, [profile,param]);
 

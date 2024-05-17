@@ -2,6 +2,7 @@ import React,{useEffect,useState,useRef} from 'react'
 import { useSelector } from 'react-redux';
 import { ToastContainer,toast } from 'react-toastify';
 import DropdownOptions from './DropdownOptions';
+import Loader from './loader';
 
 
 
@@ -34,7 +35,7 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
     const [comments, setComments] = useState(null);
     const [comment,setComment] = useState('')
     
-
+    const [loading, setLoading] = useState(true);
     const inputRef = useRef(null);
     const [showPostDetailModal,setShowPostDetailModal] = useState(false)
     const [initialCaption, setInitialCaption] = useState('');
@@ -62,10 +63,12 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
     useEffect(() => {
       
       console.log('checking',postID)
+      setLoading(true)
       if (postID) {
         console.log("checking use effect")
         fetchData();
       }
+      setLoading(false)
     }, [postID]);
     
     if( !isVisible ) return null;
@@ -129,7 +132,9 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
   
     const toggleLikePost = async (postId) => {
       try {
+        setLoading(true)
         await likePostApi(postId, fetchData);
+        setLoading(false)
       } catch (error) {
         toast.error("Failure, Post not Liked!", {
           position: "top-center",
@@ -140,9 +145,11 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
     const postComment = async (e)=>{
       e.preventDefault();
       try{
+        setLoading(true)
         await createCommentApi(postID,comment)
         setComment('')
         fetchData();
+        setLoading(false)
       }catch(error){
         toast.error('Failure, comment not posted.!', {
           position: "top-center",

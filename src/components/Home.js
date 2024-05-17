@@ -157,7 +157,9 @@ const dispatch=useDispatch()
 
   const toggleLikePost = async (postId) => {
     try {
+      setLoading(true);
       await likePostApi(postId, fetchData);
+      setLoading(false);
     } catch (error) {
       toast.error("Failure, Post not Liked!", {
         position: "top-center",
