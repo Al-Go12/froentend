@@ -56,7 +56,7 @@ const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage ,u
         onClose();
         const newPostData = await createPostApi(caption, postImage);
         console.log('newpostdata after creation',newPostData)
-        updatePostList(newPostData)
+        
         toast.success('Post Created successfully', {
           position: 'top-center',
         });
