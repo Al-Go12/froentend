@@ -1,27 +1,21 @@
 import React from 'react';
+import './Loader.css';
 
 const Loader = () => {
   return (
-    <div style={loaderStyle}>
-      <span style={barStyle}></span>
-      <span style={barStyle}></span>
-      <span style={barStyle}></span>
+
+
+    <div
+    className="z-10 fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center "
+    id="wrapper"
+  >
+    <div className="loader">
+      <span className="bar"></span>
+      <span className="bar"></span>
+      <span className="bar"></span>
+    </div>
     </div>
   );
 };
 
 export default Loader;
-
-const loaderStyle = {
-  display: 'flex',
-  alignItems: 'center'
-};
-
-const barStyle = {
-  display: 'inline-block',
-  width: '3px',
-  height: '20px',
-  backgroundColor: 'rgba(255, 255, 255, .5)',
-  borderRadius: '10px',
-  animation: 'scale-up4 1s linear infinite'
-};
