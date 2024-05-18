@@ -142,10 +142,13 @@ const MenuSideBar = () => {
            <span className='menusidebar-text ml-3'>Notifications</span>
            </div>
       </NavLink>
+       
 
-      <div style={{ marginTop: '20px', marginLeft:'25%' }}>
+      <div onClick={logout} style={{ marginTop: '20px', marginLeft:'25%' }}>
+        <NavLink to={'/login'}>
            <LogoutIcon className='icon-sidebar'/>
            <span className='menusidebar-text ml-3'>Logout</span>
+           </NavLink>  
            </div>
 
     </div>

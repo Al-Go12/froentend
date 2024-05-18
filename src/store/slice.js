@@ -33,5 +33,5 @@ export const authenticationSlice = createSlice({
     }
 });
 
-export const { set_Authentication,updateUserProfile,addNotification, clearNotifications } = authenticationSlice.actions;
+export const { set_Authentication,updateUserProfile,addNotification, clearNotifications,removeNotificationById } = authenticationSlice.actions;
 export default authenticationSlice.reducer;
