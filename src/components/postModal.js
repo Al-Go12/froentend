@@ -1,16 +1,16 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import createPostApi from '../api/createPostApi';
 import { BASE_URL } from '../constant/api_url'
 import UpdatePostApi from '../api/UpdatePostApi';
 
-const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage ,updateCaption , updatePostList}) => {
+const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage, updateCaption, updatePostList }) => {
   const [postImage, setPostImage] = useState(initialImage || null);
   const [caption, setCaption] = useState(initialCaption || '');
   const [previewImageUrl, setPreviewImageUrl] = useState(initialImage || null);
 
   useEffect(() => {
-    console.log('postId check for post update',postID)
+    console.log('postId check for post update', postID)
     setPostImage(initialImage || null);
     setCaption(initialCaption || '');
     setPreviewImageUrl(initialImage || null);
@@ -28,19 +28,19 @@ const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage ,u
 
 
   if (!isVisible) return null;
-  console.log("postId",postID)
+  console.log("postId", postID)
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (postID) {
       try {
         onClose();
-        console.log('post:id',postID,caption)
+        console.log('post:id', postID, caption)
         await UpdatePostApi(postID, caption, postImage);
         // Call the updateCaption function with the new caption
         console.log('updateCaption', caption);
         updateCaption(postID, caption);
         setCaption('');
-      
+
         toast.success('Post updated successfully', {
           position: 'top-center',
         });
@@ -55,8 +55,8 @@ const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage ,u
       try {
         onClose();
         const newPostData = await createPostApi(caption, postImage);
-        console.log('newpostdata after creation',newPostData)
-        
+        console.log('newpostdata after creation', newPostData)
+
         toast.success('Post Created successfully', {
           position: 'top-center',
         });
@@ -71,23 +71,23 @@ const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage ,u
   };
 
   return (
-    
+
 
     <div
       className="z-50 fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center"
       id="wrapper"
       onClick={handleClose}
     >
-      <div 
+      <div
         style={{ backgroundColor: 'rgb(38,38,38)' }}
-      className="m-2 w-[600px] flex flex-col">
+        className="m-2 w-[600px] flex flex-col">
         <button className="text-white text-xl place-self-end" onClick={onClose}>
           x
         </button>
         <div
           style={{ backgroundColor: 'rgb(38,38,38)' }}
-         className="bg-white text-white p-2 rounded">
-          <form className="m-3" onSubmit={(e)=>handleSubmit(e)}>
+          className="bg-white text-white p-2 rounded">
+          <form className="m-3" onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="modal" className="flex justify-center font-bold">
               {postID ? 'Update Post' : 'Add Post'}
             </label>
@@ -109,27 +109,27 @@ const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage ,u
             )}
 
             {postImage && (
-            <div className="shrink-0 flex justify-center">
+              <div className="shrink-0 flex justify-center">
                 {previewImageUrl && (
-                <img
+                  <img
                     id="preview_img"
                     className="w-80 object-cover rounded-lg my-2"
                     src={
-                    previewImageUrl.startsWith('http://127.0.0.1:8000')
+                      previewImageUrl.startsWith('http://127.0.0.1:8000')
                         ? previewImageUrl
                         : postID
-                        ? `${BASE_URL}${postImage}`
-                        : previewImageUrl
+                          ? `${BASE_URL}${postImage}`
+                          : previewImageUrl
                     }
                     alt="Current"
-                />
+                  />
                 )}
-            </div>
+              </div>
             )}
 
             <div className="relative my-5" data-te-input-wrapper-init>
               <input
-              style={{ backgroundColor: 'rgb(26, 26, 26)' }}
+                style={{ backgroundColor: 'rgb(26, 26, 26)' }}
                 type="text"
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
@@ -149,7 +149,7 @@ const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage ,u
               type="submit"
               data-te-ripple-init
               data-te-ripple-color="light"
-              style={{  backgroundColor: '#B9933C'}}
+              style={{ backgroundColor: '#B9933C' }}
               className="inline-flex items-center rounded px-6 pb-2 pt-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
             >
               <span className="flex-shrink-0">Done</span>

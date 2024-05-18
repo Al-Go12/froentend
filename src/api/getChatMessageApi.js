@@ -2,9 +2,13 @@ import axiosInstance from "../utils/axiosInstance";
 
 const getChatMessagesApi = async (roomId) => {
     try {
+      const accessToken = localStorage.getItem('access');
       const response = await axiosInstance({
         url: `/chat/chat-room/${roomId}`,
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+      }
       });
       if (response.status === 200) {
         console.log("get chat messages.!", response.data);

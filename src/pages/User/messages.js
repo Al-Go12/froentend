@@ -326,7 +326,7 @@ const Messages = () => {
         <div className="flex flex-col flex-grow w-3/5 mt-10 p-1 m-20z   rounded-lg overflow-hidden" style={{backgroundColor:'rgb(38,38,38)'}}>
        
           {bg ? (
-            <div ref={ref} className="flex flex-col flex-grow  h-0  overflow-auto  mb-5  relative">
+            <div ref={ref} className="flex flex-col flex-grow  h-0  overflow-auto  mb-5 ">
             <div className='bg-white max-w-full h-10 ' style={{position:"fixed",width:'53%',display: 'flex', justifyContent: 'flex-end'}}> 
             <div className='text-black text-lg mr-2'>
               
@@ -344,11 +344,12 @@ const Messages = () => {
             
             </div>
             </div>
+            <div className='mt-10'></div>
               {messages?.map((message, index) =>
                 message?.sender_email === user.email ? (
                   <div
                     key={index}
-                    className="flex w-full mt-10 space-x-3 max-w-xs ml-auto justify-end"
+                    className="flex w-full mt-10 ps-10 space-x-3 max-w-xs ml-auto justify-end"
                   >
                     <div>
                       <div className="bg-green-500 text-white p-1 rounded-l-lg rounded-br-lg">
@@ -424,7 +425,7 @@ const Messages = () => {
               <div
                 key={profile.id}
                 onClick={() => joinChatroom(profile.id, profile.members[0].id, profile.members[0].display_pic)}
-                className="flex items-center rounded-lg m-1 cursor-pointer bg-gray-300 p-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
+                className="flex items-center relative rounded-lg m-1 cursor-pointer bg-gray-300 p-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
               >
                 {profile.unseen_message_count > 0 && (
                   <div className="absolute top-0 left-0 bg-red-500 text-white px-2 py-1 rounded-full w-6 h-6 flex items-center justify-center">

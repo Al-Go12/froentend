@@ -28,13 +28,16 @@ const DisplayPicture = "https://e7.pngegg.com/pngimages/799/987/png-clipart-comp
 
 const SuggessionsContainer = styled.div`
   margin-top: 50px;
-  margin-right: 20px;
+  
 `;
 
 const SuggesstionsTitle = styled.div`
-  color: grey;
-  font-weight: bold;
+color: grey;
+font-weight: bold;
+display : flex;
+justify-content : center;
 `;
+
 
 const UsernameLeft = styled.div`
   display: flex;
@@ -52,9 +55,12 @@ const Relation = styled.span`
 `;
 
 const SuggesstionUsername = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
+display: flex;
+justify-content: center;
+margin-top: 15px;
+flex-wrap : wrap;
+align-items : center;
+padding : 15px;
 `;
 
 const FollowButton = styled.button`
@@ -160,83 +166,83 @@ function Suggestionbar() {
 
   return (
     <div >
-        <SuggessionsContainer className='suggessions w-3/9 '>
-          
-          <SuggesstionsTitle className="suggesstions__title">Suggesstions for you</SuggesstionsTitle>
-          <div className="suggesstions_usernames">
-            {usersNotFollowing ? showAllUsers ? usersNotFollowing.map((users) =>(
-              <SuggesstionUsername className="suggesstion__username" key={users.id}>
-                  <UsernameLeft className="username__left">
-                      <span className="avatar">
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          src={users.display_pic ? `${BASE_URL}${users.display_pic}` : DisplayPicture}
-                          alt="user_image"
-                        />
-                      </span>
-                      <UsernameInfo className="username__info m-2">
-                          <Username className='username'>
-                           
-                          </Username>
-                          <Relation className='relation'>New to Tribe Tie</Relation>
-                      </UsernameInfo>
-                  </UsernameLeft>
-                  {users.email !== user.email &&
-                    (users.followers && users.followers.some(
-                      (follower) => follower.follower === user.email
-                    ) ? (
-                          <FollowButton className="follow__button" title={`Unfollow ${users.username}`} onClick={() => handleToggleFollow(users.id)}>Unfollow</FollowButton>
-                        ):(
-                          <FollowButton className="follow__button" title={`Follow ${users.username}`} onClick={() => handleToggleFollow(users.id)}>Follow</FollowButton>
-                  ))}
-              </SuggesstionUsername>
-            )): usersNotFollowing.slice(0, initialUsersToDisplay).map((users) => (
-              <SuggesstionUsername className="suggesstion__username" key={users.id}>
-                  <UsernameLeft className="username__left">
-                      <span className="avatar">
-                        <img
-                          className="w-10 h-10 rounded-full"
-                          src={users.display_pic ? `${BASE_URL}${users.display_pic}` : DisplayPicture}
-                          alt="user_image"
-                        />
-                      </span>
-                      <UsernameInfo className="username__info m-2">
-                          <Username className='username'>
-                          <NavLink className='font-bold cursor-pointer leading-tight ' to={`/follow/${users.email}`}>
-                              {users.username}
-                            </NavLink>
-                            
-                          </Username>
-                          <Relation className='relation'>New to Tribe_Tie</Relation>
-                      </UsernameInfo>
-                  </UsernameLeft>
-                  {users.email !== user.email &&
-                    (users.followers && users.followers.some(
-                      (follower) => follower.follower === user.email
-                    ) ? (
-                          <FollowButton className="follow__button" title={`Unfollow ${users.username}`} onClick={() => handleToggleFollow(users.id)}>Unfollow</FollowButton>
-                        ):(
-                          <FollowButton className="follow__button" title={`Follow ${users.username}`} onClick={() => handleToggleFollow(users.id)}>Follow</FollowButton>
-                  ))}
-              </SuggesstionUsername>
-            ))
-            :(
-              <SuggesstionUsername className="suggesstion__username">
-                  {/* Render the first user here */}
-              </SuggesstionUsername>
-              )}
-          </div>
-          
-         {/*{usersNotFollowing && usersNotFollowing.length > initialUsersToDisplay && (
-              <button className='font-bold cursor-pointer' style={{ color: 'gray' }} onClick={toggleShowAllUsers}>
-                {showAllUsers ? 'Show Less' : 'Show More'}
-              </button>
-          )}
-           */} 
-        </SuggessionsContainer>
-
+    <SuggessionsContainer className='suggessions'>
       
-    </div>
+      <SuggesstionsTitle className="suggesstions__title">Suggesstions for you</SuggesstionsTitle>
+      <div className="suggesstions_usernames">
+        {usersNotFollowing ? showAllUsers ? usersNotFollowing.map((users) =>(
+          <SuggesstionUsername className="suggesstion__username" key={users.id}>
+              <UsernameLeft className="username__left">
+                  <span className="avatar">
+                    <img
+                      className="w-10 h-10 rounded-full"
+                      src={users.display_pic ? `${BASE_URL}${users.display_pic}` : DisplayPicture}
+                      alt="user_image"
+                    />
+                  </span>
+                  <UsernameInfo className="username__info m-2">
+                      <Username className='username'>
+                       
+                      </Username>
+                      <Relation className='relation'>New to Tribe Tie</Relation>
+                  </UsernameInfo>
+              </UsernameLeft>
+              {users.email !== user.email &&
+                (users.followers && users.followers.some(
+                  (follower) => follower.follower === user.email
+                ) ? (
+                      <FollowButton className="follow__button" title={`Unfollow ${users.username}`} onClick={() => handleToggleFollow(users.id)}>Unfollow</FollowButton>
+                    ):(
+                      <FollowButton className="follow__button" title={`Follow ${users.username}`} onClick={() => handleToggleFollow(users.id)}>Follow</FollowButton>
+              ))}
+          </SuggesstionUsername>
+        )): usersNotFollowing.slice(0, initialUsersToDisplay).map((users) => (
+          <SuggesstionUsername className="suggesstion__username" key={users.id}>
+              <UsernameLeft className="username__left">
+                  <span className="avatar">
+                    <img
+                      className="w-10 h-10 ms-1 rounded-full"
+                      src={users.display_pic ? `${BASE_URL}${users.display_pic}` : DisplayPicture}
+                      alt="user_image"
+                    />
+                  </span>
+                  <UsernameInfo className="username__info m-2">
+                      <Username className='username'>
+                      <NavLink className='font-bold cursor-pointer leading-tight ' to={`/follow/${users.email}`}>
+                          {users.username}
+                        </NavLink>
+                        
+                      </Username>
+                      <Relation className='relation'>New to Tribe_Tie</Relation>
+                  </UsernameInfo>
+              </UsernameLeft>
+              {users.email !== user.email &&
+                (users.followers && users.followers.some(
+                  (follower) => follower.follower === user.email
+                ) ? (
+                      <FollowButton className="follow__button" title={`Unfollow ${users.username}`} onClick={() => handleToggleFollow(users.id)}>Unfollow</FollowButton>
+                    ):(
+                      <FollowButton className="follow__button" title={`Follow ${users.username}`} onClick={() => handleToggleFollow(users.id)}>Follow</FollowButton>
+              ))}
+          </SuggesstionUsername>
+        ))
+        :(
+          <SuggesstionUsername className="suggesstion__username">
+              {/* Render the first user here */}
+          </SuggesstionUsername>
+          )}
+      </div>
+      
+     {/*{usersNotFollowing && usersNotFollowing.length > initialUsersToDisplay && (
+          <button className='font-bold cursor-pointer' style={{ color: 'gray' }} onClick={toggleShowAllUsers}>
+            {showAllUsers ? 'Show Less' : 'Show More'}
+          </button>
+      )}
+       */} 
+    </SuggessionsContainer>
+
+  
+</div>
   )
 }
 

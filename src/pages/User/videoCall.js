@@ -69,7 +69,9 @@ const RoomPage=()=>{
     
     
      return (
+        <div>
         <div className="w-full h-full"ref={containerRef} />
+        </div>
    )
      
     

@@ -113,26 +113,41 @@ const MenuSideBar = () => {
   }
 
   return (
-    <div style={{ backgroundColor: 'rgb(38, 38, 38)', height:'300px' }} className=' bg-customColor text-white flex flex-col justify-center items-center my-10 rounded-2xl'>
-     <Link to='/'>
-     <p style={{ marginTop: '10px' }}><HomeIcon/>Home</p></Link>
-     <NavLink to={'/searchpage/'}>
-      <p style={{ marginTop: '20px' }}> <SearchIcon/>Search</p>
+    <div style={{ backgroundColor: 'rgb(38, 38, 38)', height: '300px' }} className=' bg-customColor text-white flex flex-col justify-center  my-10 rounded-2xl'>
+      <Link to='/'>
+        <div style={{ marginTop: '10px', marginLeft:'25%' }}>
+          <HomeIcon className='icon-sidebar'/>
+          <span className='menusidebar-text ml-3'>Home</span>
+        </div>
+      </Link>
+      
+      <NavLink to={'/searchpage/'}>
+        <div style={{ marginTop: '20px' , marginLeft:'25%'}}>
+           <SearchIcon className='icon-sidebar'/>
+           <span className='menusidebar-text ml-3'>Search</span>
+           </div>
       </NavLink>
 
-      <Link to='/messages'> 
-      <p style={{ marginTop: '20px' }}> <ChatIcon/>Chat</p>
-      </Link>
+
+      <NavLink to={'/messages'}>
+        <div style={{ marginTop: '20px', marginLeft:'25%' }}>
+           <ChatIcon className='icon-sidebar'/>
+           <span className='menusidebar-text ml-3'>Chat</span>
+           </div>
+      </NavLink>
 
       <NavLink to={'/notification/'}>
-       
-      <p style={{ marginTop: '20px' }} >  <NotificationsActiveIcon/>Notifications</p>
-
+        <div style={{ marginTop: '20px', marginLeft:'25%' }}>
+           <NotificationsActiveIcon className='icon-sidebar'/>
+           <span className='menusidebar-text ml-3'>Notifications</span>
+           </div>
       </NavLink>
-      <p style={{ marginTop: '20px' }} onClick={handleLogout}><LogoutIcon/>Logout</p>
 
-      
-     
+      <div style={{ marginTop: '20px', marginLeft:'25%' }}>
+           <LogoutIcon className='icon-sidebar'/>
+           <span className='menusidebar-text ml-3'>Logout</span>
+           </div>
+
     </div>
 
 

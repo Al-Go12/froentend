@@ -44,7 +44,7 @@ function User_Home({children}) {
        <div style={{ backgroundColor:'#181818',display : 'flex',flexDirection :'column' , alignItems :'center',justifyContent : 'center' }}className='rounded-2xl'>
           {children}
        </div>
-       <div  style={{ backgroundColor: 'rgb(38,38,38)',position : 'fixed',right : '20px' ,top : 0,height : '88vh',marginTop:'70px',overflow: 'auto' }} className=' w-1/6 px-10  rounded-lg'> 
+       <div  style={{ backgroundColor: 'rgb(38,38,38)',position : 'fixed',right : '20px' ,top : 0,height : '88vh',marginTop:'70px',overflow: 'auto' }} className=' w-1/6  rounded-lg'> 
       
         
          { <Suggestionbar/>}
