@@ -23,6 +23,7 @@ import likePostApi from '../api/likePostApi';
 import createCommentApi from '../api/createCommentApi';
 import deleteCommentApi from '../api/deleteCommentApi';
 import { NavLink } from 'react-router-dom';
+const DisplayPicture = "https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
 
 
 
@@ -207,7 +208,7 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
                   <div className="flex-shrink-0">
                     <img
                       className="w-8 h-8 rounded-full"
-                      src={`${BASE_URL}` + post?.author?.display_pic}
+                      src={post?.author?.display_pic ? `${BASE_URL}${post.author.display_pic}` : DisplayPicture}
                       alt="user"
                     />
                   </div>
@@ -237,7 +238,8 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
                           <div className="flex-shrink-0">
                             <img
                               className="w-8 h-8 rounded-full border"
-                              src={`${BASE_URL}` + cmnt?.user?.display_pic}
+                              src={cmnt?.user?.display_pic ? `${BASE_URL}${cmnt.user.display_pic}` : DisplayPicture}
+                              
                               alt="comment_user"
                             />
                           </div>
@@ -289,7 +291,7 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
                           </button>
                         ) : (
                           <button
-                            className="inline-block p-0 text-xs font-medium leading-normal"
+                            className="inline-block p-0 text-xs font-medium leading-normal  text-white"
                             type="button"
                             data-te-ripple-init
                             data-te-ripple-color="light"
@@ -303,7 +305,7 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
                           </button>
                         )}
                         <button
-                          className="inline-block p-0 text-xs font-medium leading-normal"
+                          className="inline-block p-0 text-xs font-medium leading-normal  text-white"
                           type="button"
                           data-te-ripple-init
                           data-te-ripple-color="light"
@@ -324,7 +326,7 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
 */}
 
                       </div>
-                      <p>{post?.likes_count ?? 0}&nbsp;likes&nbsp;&nbsp;
+                      <p className='text-white'>{post?.likes_count ?? 0}&nbsp;likes&nbsp;&nbsp;
                         {post?.comments_count ?? 0}comments</p>
                     </div>
                   </div>
