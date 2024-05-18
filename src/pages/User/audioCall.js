@@ -60,7 +60,7 @@ const AudioCall=()=>{
  myMeeting()
 
 
-    },[])
+    },[user,roomId])
  
     
 

@@ -274,7 +274,7 @@ const Follow = () => {
 
 
   useEffect(() => {
-    setLoading(true)
+     setLoading(true)
     if (user?.username === null) {
       checkAuth()
 
@@ -285,7 +285,7 @@ const Follow = () => {
 
 
     }
-    setLoading(false)
+      setLoading(false)
   }, [user, param])
 
 
@@ -293,7 +293,7 @@ const Follow = () => {
 
   useEffect(() => {
     if (profile && user) {
-      setLoading(true)
+       setLoading(true)
       const fetchFollowStatus = async () => {
         try {
           const response = await checkfollowstatusapi(profile.email)
@@ -309,7 +309,7 @@ const Follow = () => {
         }
       };
       fetchFollowStatus();
-      setLoading(false)
+       setLoading(false)
     }
   }, [profile, param]);
 
@@ -399,7 +399,7 @@ const Follow = () => {
 
   //
   if (loading) {
-    return <Loader />; // Render loader component while data is being fetched
+    return <Loader/>; // Render loader component while data is being fetched
   }
 
   return (

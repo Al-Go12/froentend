@@ -34,7 +34,7 @@ const DisplayPicture = "https://e7.pngegg.com/pngimages/799/987/png-clipart-comp
 
 
 
-const initialPostsToDisplay = 2; // Number of posts to display initially
+const initialPostsToDisplay = 4; // Number of posts to display initially
 
 
 

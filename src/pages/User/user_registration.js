@@ -4,6 +4,7 @@ import { BASE_URL } from '../../constant/api_url';
 import {  ToastContainer ,toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Screens51 from '../../additional/Group39.png'
+import Loader from '../../components/loader';
 
 
 function User_registration() {
@@ -16,6 +17,8 @@ function User_registration() {
     const [otp, setOtp] = useState("")
     const [formError, setFormError] = useState([])
     const [UserID, setUserID] = useState(null)
+    const [otpSent, setOtpSent] = useState(false);
+    const[loading,setLoading]=useState(false)
 
 
 
@@ -46,15 +49,17 @@ function User_registration() {
         formData.append("last_name", e.target.lastname.value);
         
         
-
+        
         try {
+            setLoading(true)
             const response = await axios.post(BASE_URL + '/api/register', formData);
             console.log(response.data); // Handle the response as needed
             if (response.status === 201) {
                console.log(response.data.id)
                 setUserID(response.data.id)
                 
-          
+                setOtpSent(true); 
+                setLoading(false)
                 console.log("OTP sent")
                 toast.success("OTP sent", {
                     position: "top-center",
@@ -64,9 +69,10 @@ function User_registration() {
 
                 return response
             }
+            
         } catch (errors) {
 
-
+          
             for (let key in errors.response.data.errors) {
                 const errorArray = errors.response.data.errors[key];
                 const errorMessage = errorArray[0]; // Access the first element of the array
@@ -75,6 +81,8 @@ function User_registration() {
                 });
                 console.log(errorMessage);
             }}
+
+
             
     };
 
@@ -136,10 +144,12 @@ function User_registration() {
                         </div>
                         
                     </form>
-                    <form onSubmit={verify_otp} style={{ textAlign: 'center', marginTop: '30px' }}>
-                        <input type="text" id="otp" name="otp" placeholder="Enter OTP"   maxLength="4" style={{ margin: '10px', height: '50px', padding: '10px', paddingLeft:'15px', border: '1px solid #ccc', borderRadius: '15px', width: '50%', backgroundColor: '#181818', color: '#fff' }} />
-                        <button type="submit" style={{ margin: '10px', padding: '8px 20px', backgroundColor: '#B9933C', color: '#fff', border: 'none', borderRadius: '15px', cursor: 'pointer' }}>Verify OTP</button>
-                    </form>
+                    {otpSent && (
+            <form onSubmit={verify_otp} style={{ textAlign: 'center', marginTop: '30px' }}>
+              <input type="text" id="otp" name="otp" placeholder="Enter OTP" maxLength="4" style={{ margin: '10px', height: '50px', padding: '10px', paddingLeft: '15px', border: '1px solid #ccc', borderRadius: '15px', width: '50%', backgroundColor: '#181818', color: '#fff' }} />
+              <button type="submit" style={{ margin: '10px', padding: '8px 20px', backgroundColor: '#B9933C', color: '#fff', border: 'none', borderRadius: '15px', cursor: 'pointer' }}>Verify OTP</button>
+            </form>
+          )}
                 </div>
             </div>
             
