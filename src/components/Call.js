@@ -11,12 +11,13 @@ const Call = ({ show, handleClose, isOutgoing, callerInfo, videoCall ,calltype,A
   
   // Hide modal when close button is clicked
   const handleCloseModal = () => {
+    console.log(calltype)
     setIsVisible(false);
     handleClose();
 };
 
   const handleAccept=()=>{
-    if (calltypes=='videocall'){
+    if (calltypes=='videoCall'){
       videoCall()
     }
     else{

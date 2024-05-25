@@ -172,7 +172,7 @@ function Home() {
     try {
       console.log('updatepostlist is working')
       const data = await postListApi(access_token);
-      setPosts((prevPosts) => [data.newPost, ...prevPosts]); // Add the new post at the beginning
+      setPosts(data.posts); // Add the new post at the beginning
       setUsersNotFollowing(data.users_not_following);
       console.log('Posts inside home page updatePostList', data.newPost);
     } catch (error) {

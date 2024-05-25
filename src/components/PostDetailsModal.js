@@ -27,7 +27,7 @@ const DisplayPicture = "https://e7.pngegg.com/pngimages/799/987/png-clipart-comp
 
 
 
-const PostDetailModal = ({ isVisible, onClose, postID }) => {
+const PostDetailModal = ({ isVisible, onClose, postID,onDelete }) => {
   console.log('checking', postID)
 
   const [post, setPost] = useState(null);
@@ -84,6 +84,7 @@ const PostDetailModal = ({ isVisible, onClose, postID }) => {
       toast.success('Post Deleted Successfully.', {
         position: 'top-center',
       })
+      onDelete(postId);
       onClose()
     } catch (error) {
       toast.error('Post Not Deleted.', {

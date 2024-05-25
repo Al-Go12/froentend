@@ -61,6 +61,7 @@ const PostModal = ({ isVisible, onClose, postID, initialCaption, initialImage, u
           position: 'top-center',
         });
         setCaption('');
+        updatePostList()
       } catch (error) {
         console.log(error)
         toast.error('Failure, Post not Created', {

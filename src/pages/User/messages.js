@@ -144,7 +144,7 @@ const Messages = () => {
             const  link =message.link
             const caller=message.sender
             setCallerInfo(caller)
-             setCallType('audioCall')
+            setCallType('audioCall')
             setRoom_id(link)
             console.log("checking if of audiocall condition")
             showCall(true)

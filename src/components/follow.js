@@ -353,6 +353,12 @@ const Follow = () => {
 
   }
 
+
+  const handleprofile_postlist=()=>{
+
+
+  }
+
   const handleReportPost = async (postId, reason) => {
     try {
       await ReportedPostApi(postId, reason, fetchData)
@@ -395,6 +401,11 @@ const Follow = () => {
     setShowModal(false)
   }
 
+   
+  const handlePostDelete = (postId) => {
+    setPosts((prevPosts) => prevPosts.filter(post => post.id !== postId));
+  };
+
 
 
   //
@@ -414,7 +425,7 @@ const Follow = () => {
             onClose={closereportModal} isVisible={showReported} profileid={profile?.id} fetchData={fetchData}
 
           />
-          <PostDetailModal isVisible={showPostDetailModal} onClose={() => setShowPostDetailModal(false)} postID={postId} />
+          <PostDetailModal isVisible={showPostDetailModal} onClose={() => setShowPostDetailModal(false)} postID={postId}  onDelete={handlePostDelete} />
           <div style={{ color: 'whitesmoke', padding: '5px', backgroundColor: 'rgb(38,38,38)', display: 'flex', justifyContent: 'center', width: '100%' }}>
             <div style={{ backgroundColor: 'rgb(38,38,38)', marginRight: '1rem' }}>
               <label htmlFor="profilePhotoInput">
