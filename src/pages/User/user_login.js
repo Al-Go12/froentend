@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import { set_Authentication, updateUserProfile } from '../../store/slice';
 import { BASE_URL } from '../../constant/api_url';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Screens51 from '../../additional/Group40.png'
@@ -30,74 +30,84 @@ function User_login() {
                         isAuthenticated: true,
                         isAdmin: response.data.isAdmin
                     })
-                    
+
                 );
-                
+
 
                 console.log(response.data.authuser)
 
                 dispatch(
                     updateUserProfile(response.data.authuser))
+
+                toast("Login successful");    
                 navigate('/');
-                toast.success("Login successful");
                
+
             }
         } catch (error) {
-            console.log(error.response.data)
-            
-            toast.error(error.response.data.error)
+            console.log(error?.response)
+
+            toast.error(error?.response?.data?.error)
         }
     };
     return (
-        <div style={{ display: 'flex', height: '100vh', backgroundColor: '#181818' }}>
-            <div style={{ flex: '1', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div div className='w-full h-screen flex bg-[#181818] items-center'>
+            <div className=' flex-1 flex flex-col justify-center items-center'>
                 <div style={{ backgroundColor: 'rgb(38,38,38)', padding: '20px', borderRadius: '20px', width: '60%', height: '70%', marginTop: '10vh' }}>
-                <ToastContainer />
+                    <ToastContainer />
                     <form onSubmit={login} style={{ textAlign: 'center', marginTop: '30%' }}>
                         <div>
                             <h1 style={{ color: 'whitesmoke' }}>LOGIN</h1>
                         </div>
                         <div style={{ marginBottom: '20px' }}>
-                            <input type='email' placeholder="Email" style={{ margin: '10px', height: '50px', padding: '10px', paddingLeft:'15px', borderRadius: '15px', width: '80%', backgroundColor: '#181818', color: '#fff' }} id='email' />
+                            <input type='email' placeholder="Email" style={{ margin: '10px', height: '50px', padding: '10px', paddingLeft: '15px', borderRadius: '15px', width: '80%', backgroundColor: '#181818', color: '#fff' }} id='email' />
                         </div>
                         <div>
-                            <input type='password' placeholder="Password" style={{ margin: '10px',height: '50px', padding: '10px', paddingLeft:'15px', borderRadius: '15px', width: '80%', backgroundColor: '#181818', color: '#fff' }} id='password' />
+                            <input type='password' placeholder="Password" style={{ margin: '10px', height: '50px', padding: '10px', paddingLeft: '15px', borderRadius: '15px', width: '80%', backgroundColor: '#181818', color: '#fff' }} id='password' />
                         </div>
-                        <button type="submit" style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#B9933C', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', width: '30%' }}>Login</button>
 
-                        <div className="text-sm mt-3 mb-3 float-right">
+
+                        <div className=' flex justify-between  mx-10 my-6'>
+                            
+                            <div >
+                            
+                            <button type="submit" className='bg-yellow-600 p-3 rounded-xl w-30 ' >Login</button>
+                            </div>
+
+                            <div className="text-sm ">
                                 <Link
-                                to={'/forgot-password'}
-                                className="font-semibold text-indigo-600 hover:text-indigo-500 text-decoration-none"
+                                    to={'/forgot-password'}
+                                    className="font-semibold text-indigo-600 hover:text-indigo-500 text-decoration-none"
                                 >
-                                Forgot password?
+                                    Forgot password?
                                 </Link>
                             </div>
-                    
-                        <div style={{ cursor: 'pointer', marginTop: '20px', color: 'whitesmoke' }}>
+                        </div>
+
+                        <div style={{ cursor: 'pointer', marginTop: '30%', color: 'whitesmoke' }}>
 
 
-    <Link to='/signup'>
-        <a>
-            <h4>new user? Click here to signup</h4>
-        </a>
-    </Link>
-</div>
+                            <Link to='/signup'>
+
+                                <h4>new user? Click here to signup</h4>
+
+                            </Link>
+                        </div>
 
                     </form>
-                  
+
                 </div>
             </div>
-               {/* Right Section */}
-               <div style={{ flex: '1', width: '500px',height: '900px', display: 'flex', justifyContent: 'center' }}>
-    <div style={{ width: '100%', height: '100%', backgroundImage: `url(${Screens51})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-        {/* Empty div */}
-    </div>
-</div>
-    
-           
+            {/* Right Section */}
+            <div className=' m-0 p-0 flex-1  justify-center  md:h-3/4 md:w-3/4 hidden md:flex'>
+                <div className='w-full h-full  bg-no-repeat md:bg-contain' style={{ backgroundImage: `url(${Screens51})` }}>
+                    {/* Empty div */}
+                </div>
+            </div>
+
+
         </div>
     );
-    }    
+}
 
 export default User_login;

@@ -2,7 +2,7 @@ import React, { useRef,useEffect } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { useSelector } from "react-redux";
-
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -22,14 +22,14 @@ const RoomPage=()=>{
     useEffect(()=>{
     
 
-        const myMeeting= async ()=>{
+        const myMeeting= async (element)=>{
             const userID = user.id.toString();
     
             const userName =user.username ;
           
             const roomID=roomId
-            const appID=1407489276;
-            const serverSecret="d7fcf37d3b945ec7f887333a29e73cd9";
+            const appID=2131821859;
+            const serverSecret="4aed30dc53baee65dac38423e67bdb18";
             const kitToken=ZegoUIKitPrebuilt.generateKitTokenForTest(appID,
               
                 
@@ -57,10 +57,10 @@ const RoomPage=()=>{
         }) }  
 
 
-           myMeeting()
+ myMeeting()
 
 
-    },[user, roomId])
+    },[])
  
     
 
@@ -68,13 +68,9 @@ const RoomPage=()=>{
     
     
     
-     return (
-        <div>
-        <div className="w-full h-full"ref={containerRef} />
-        </div>
-   )
-     
-    
+     return <div>
+           <div className="w-full h-full"ref={containerRef} />
+         </div>
 
     }
     

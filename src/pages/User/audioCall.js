@@ -22,14 +22,14 @@ const AudioCall=()=>{
     useEffect(()=>{
     
 
-        const myMeeting= async ()=>{
+        const myMeeting= async (element)=>{
             const userID = user.id.toString();
     
             const userName =user.username ;
           
             const roomID=roomId
-            const appID=1407489276;
-            const serverSecret="d7fcf37d3b945ec7f887333a29e73cd9";
+            const appID=2131821859;
+            const serverSecret="4aed30dc53baee65dac38423e67bdb18";
             const kitToken=ZegoUIKitPrebuilt.generateKitTokenForTest(appID,
               
                 
@@ -60,7 +60,7 @@ const AudioCall=()=>{
  myMeeting()
 
 
-    },[user,roomId])
+    },[])
  
     
 
